@@ -8,14 +8,14 @@ if(!process.env.DATABASE_URL){
 
 const params = url.parse(process.env.DATABASE_URL);
 
-const[username, password]= params.auth.split(':');
+const[user, password]= params.auth.split(':')||['',''];
 
 const options = {
   host: params.hostname;
   port: params.port;
   database: params.pathname.split('/')[1],
   max: process.env.DB_MAX_CONNECTIONS || 2,
-  user: username,
+  user,
   password
 }
 
