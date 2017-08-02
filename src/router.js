@@ -1,7 +1,8 @@
 const http = require('http');
 const fs = require ('fs');
 const path = require ('path');
-const getData = require ('./queries/get_data');
+//commented out getData because it triggers require of config.env which is not ye present thus crashing the app
+// const getData = require ('./queries/get_data');
 const whitelist = {
   'index.html' : 'text/html',
   'main.css' : 'text/css',
