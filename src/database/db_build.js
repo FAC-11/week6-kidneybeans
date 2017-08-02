@@ -9,11 +9,11 @@ const buildDatabase = () => {
       // make more meaningful later - let the user know what's going on
       console.log(err, 'error');
     } else {
-      console.lod("database created");
+      console.log("database created");
     }
   });
 };
 
-builDatabase();
+buildDatabase();
 
 module.exports = buildDatabase;

@@ -14,11 +14,10 @@ const options = {
   host: params.hostname;
   port: params.port;
   database: params.pathname.split('/')[1],
-  max: process.env.DB_MAX_CONNECTIONS || 2
+  max: process.env.DB_MAX_CONNECTIONS || 2,
+  username,
+  password
 }
-
-if(username){options.user=username;}
-if(password){options.password=password;}
 
 options.ssl = (options.host !== 'localhost');
 
