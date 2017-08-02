@@ -32,7 +32,10 @@ const router = (request, response) => {
     if (whitelist[endpoint]) {
       contentType = whitelist[endpoint];
       if (contentType) {
-      const filePath = path.join(__dirname, '..', endpoint);
+      const filePath = path.join(__dirname, '..', 'public', endpoint);
+
+    console.log ('looking for local file:', filePath);
+
       fs.readFile(filePath, (error, file) => {
         // but if there's error handle that first
         if (error) {
