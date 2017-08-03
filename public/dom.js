@@ -39,7 +39,6 @@ function updateDom(err, data) {
       row.appendChild(location);
       //now we add both columns to our table by appending the row;
       table.appendChild(row);
-
     });
   }
 }

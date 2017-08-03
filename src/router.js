@@ -1,7 +1,7 @@
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
-const getData = require ('./queries/get_data');
+const getData = require('./queries/get_data');
 const postData = require('./queries/post_data');
 const queryString = require('querystring');
 
@@ -25,11 +25,13 @@ const router = (request, response) => {
       if (err) return console.log('error from db query', err);
       let fromDb = JSON.stringify(dbResp);
 
-      response.writeHead(200, { "content-type": "application/json" });
+      response.writeHead(200, {
+        "content-type": "application/json"
+      });
       response.end(fromDb);
     });
-  }
-  else if (endpoint === 'create-place') {
+  } else {
+  if (endpoint === 'create-place') {
     let body = '';
     request.on('data', (chunk) => {
       body += chunk;
@@ -39,16 +41,14 @@ const router = (request, response) => {
       postData(userInput, (err, dbResp) => {
         if (err) {
           console.log(err);
-        }
-        else {
+        } else {
           console.log(dbResp);
         }
       });
-      response.writeHead(200, {'Content-Type': 'text/html'});
-      response.end('Yah cool, we have saved your input');
     });
+    endpoint = "index.html";
   }
-  else {
+  console.log(endpoint);
   if (whitelist[endpoint]) {
     const contentType = whitelist[endpoint];
     if (contentType) {
@@ -59,21 +59,27 @@ const router = (request, response) => {
       fs.readFile(filePath, (error, file) => {
         // but if there's error handle that first
         if (error) {
-          response.writeHead(500, { "Content-Type": "text/html" });
+          response.writeHead(500, {
+            "Content-Type": "text/html"
+          });
           response.end("Sorry! We've had a problem!");
         } else {
           // otherwise provide the correct file
-          response.writeHead(200, { "Content-Type": contentType });
+          response.writeHead(200, {
+            "Content-Type": contentType
+          });
           response.end(file);
         }
       });
     }
   } else {
     console.log('this is 404', endpoint);
-    response.writeHead(404, { "content-type": "text/html" });
+    response.writeHead(404, {
+      "content-type": "text/html"
+    });
     response.end("File not found. Gittoutta here!");
   }
-  }
+}
 };
 
 module.exports = router; ///soo wrong!
