@@ -1,3 +1,11 @@
 language: node_js
 node_js:
   - "node"
+postgresql: &postgresql
+adapter: postgresql
+username: foo
+password: bar
+database: travis_test_db
+before_script:
+  - psql -c "CREATE DATABASE travis_test_db;" -U postgres
+  - psql -c "CREATE USER foo WITH PASSWORD 'bar';" -U postgres
