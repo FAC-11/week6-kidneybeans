@@ -1,12 +1,18 @@
 function request(url, cb) {
   var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function() {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      cb(null, xhr.responseText)
-    } else {
-      cb('error', xhr.responseType);
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        cb(null, xhr.responseText);
+console.log ('SUCCESS!');
+      }
+      else {
+        // console.log  (xhr.readyState, xhr.status );
+        cb(xhr.status, xhr.responseType);
+      }
     }
   };
+
   xhr.open('GET', url, true);
   xhr.send();
 }
@@ -15,7 +21,7 @@ function request(url, cb) {
 var errorResult = document.getElementById('places-error');
 var table = document.getElementById('places-table');
 
-function renderError(message){
+function renderError(message) {
   var errorDiv = document.createElement('div');
   var errorMessage = document.createTextNode(message);
   errorDiv.appendChild(errorMessage);
@@ -24,7 +30,7 @@ function renderError(message){
 
 function updateDom(err, data) {
   if (err) {
-    renderError('We are really sorry, something seems to be wrong');
+    renderError('We are really sorry, something seems to be wrong', err);
   } else {
     var places = JSON.parse(data);
     places.forEach(function(place) {
