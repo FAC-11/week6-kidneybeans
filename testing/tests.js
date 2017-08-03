@@ -1,6 +1,6 @@
 const tape = require('tape');
-const dbBuild = require('./database/db_build.js');
-const dbConnection = require('./database/db_connection.js');
+const dbBuild = require('../src/database/db_build.js');
+const dbConnection = require('../src/database/db_connection.js');
 
 tape('Select all from tablePlaces', (t) => {
   const expected = [{
