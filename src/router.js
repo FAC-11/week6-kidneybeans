@@ -9,8 +9,7 @@ const whitelist = {
   "index.html": "text/html",
   "main.css": "text/css",
   // "favicon.ico": "image/x-icon",
-  "dom.js": "application/javascript",
-  "api_call.js": "application/javascript"
+  "dom.js": "application/javascript"
 };
 
 const router = (request, response) => {
@@ -19,7 +18,7 @@ const router = (request, response) => {
 
   if (endpoint === "") {
     endpoint = "index.html";
-  } 
+  }
   if (endpoint === "dbrequest") {
     getData((err, dbResp) => {
       //later getData will need to take input
