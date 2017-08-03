@@ -43,19 +43,20 @@ function updateDom(err, data) {
       location.innerHTML = place.location;
       row.appendChild(location);
 
-      table.appendChild(row);
-
       var review = document.createElement('td');
-      review.innerHTML = place.review;
+      review.innerHTML = place.review || 'No reviews - why not add one! (in a future version)';
       row.appendChild(review);
-      table.appendChild(row);
 
       var stars = document.createElement('td');
       var i = place.stars;
-      while(i--){
-        stars.innerHTML += '<img src = \"star.png\" class=\"star\">'
+      while (i--){
+        var image = document.createElement ('img');
+        image.src = "star.png";
+        image.setAttribute ('class', "star");
+        stars.appendChild(image);
       }
-      //now we add both columns to our table by appending the row;
+      row.appendChild(stars);
+      //now we add the columns to our table by appending the row;
       table.appendChild(row);
     });
   }
