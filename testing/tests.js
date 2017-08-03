@@ -18,13 +18,16 @@ tape("Select all from tablePlaces", t => {
     {
       name: "COOP",
       location: "Roman Road"
+    },
+    { 
+      name: "Mezze", 
+      location: "Roman Road"
     }
   ];
   dbConnection.query("SELECT name, location FROM places;", (err, res) => {
     const actual = res.rows;
     t.deepEquals(actual, expected, "db_connection connects to the database");
     t.end();
-    // process.exit();
   });
 });
 // testing building of new inputs
@@ -94,17 +97,34 @@ tape("testing getData", t => {
     {
       id: 1,
       name: "Chesterfield",
-      location: "Roman Road"
+      location: "Roman Road",
+      review: "excellent, nice sofas",
+      stars: 6,
+      tag: "sofas"
     },
     {
       id: 2,
       name: "Simply Fresh",
-      location: "Roman Road"
+      location: "Roman Road",
+      review: "lovely, everyday food",
+      stars: 6,
+      tag: "food"
     },
     {
       id: 3,
       name: "COOP",
-      location: "Roman Road"
+      location: "Roman Road",
+      review: "they take cards",
+      stars: 3,
+      tag: "food,cards"
+    },
+    {
+      id: 4,
+      name: "Mezze",
+      location: "Roman Road",
+      review: "lamacun!!! delicious and cheap!",
+      stars: 6,
+      tag: "meat"
     }
   ];
   getData((err, res) => {
