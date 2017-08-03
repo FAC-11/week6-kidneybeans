@@ -2,6 +2,9 @@ const http = require("http");
 const fs = require("fs");
 const path = require("path");
 const getData = require ('./queries/get_data');
+const postData = require('./queries/post_data');
+const queryString = require('querystring');
+
 const whitelist = {
   "index.html": "text/html",
   "main.css": "text/css",
@@ -24,6 +27,25 @@ const router = (request, response) => {
 
       response.writeHead(200, { "content-type": "application/json" });
       response.end(fromDb);
+    });
+  }
+  else if (endpoint === 'create-place') {
+    let body = '';
+    request.on('data', (chunk) => {
+      body += chunk;
+    });
+    request.on('end', () => {
+      let userInput = queryString.parse(body);
+      postData(userInput, (err, dbResp) => {
+        if (err) {
+          console.log(err);
+        }
+        else {
+          console.log(dbResp);
+        }
+      });
+      response.writeHead(200, {'Content-Type': 'text/html'});
+      response.end('Yah cool, we have saved your input');
     });
   }
   else {
