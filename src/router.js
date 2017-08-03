@@ -1,12 +1,11 @@
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
-//commented out getData because it triggers require of config.env which is not ye present thus crashing the app
-// const getData = require ('./queries/get_data');
+const getData = require ('./queries/get_data');
 const whitelist = {
   "index.html": "text/html",
   "main.css": "text/css",
-  "favicon.ico": "image/x-icon",
+  // "favicon.ico": "image/x-icon",
   "dom.js": "application/javascript",
   "api_call.js": "application/javascript"
 };
@@ -18,16 +17,17 @@ const router = (request, response) => {
   if (endpoint === "") {
     endpoint = "index.html";
   } 
-  else if (endpoint === "dbrequest") {
+  if (endpoint === "dbrequest") {
     getData((err, dbResp) => {
       //later getData will need to take input
-      if (err) return console.log(err);
+      if (err) return console.log('error from db query', err);
       let fromDb = JSON.stringify(dbResp);
 
       response.writeHead(200, { "content-type": "application/json" });
       response.end(fromDb);
     });
-  } 
+  }
+  else {
   if (whitelist[endpoint]) {
     const contentType = whitelist[endpoint];
     if (contentType) {
@@ -48,8 +48,10 @@ const router = (request, response) => {
       });
     }
   } else {
+    console.log('this is 404', endpoint);
     response.writeHead(404, { "content-type": "text/html" });
     response.end("File not found. Gittoutta here!");
+  }
   }
 };
 
