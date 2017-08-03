@@ -9,6 +9,7 @@ const whitelist = {
   "index.html": "text/html",
   "main.css": "text/css",
   // "favicon.ico": "image/x-icon",
+  "star.png": "image/png",
   "dom.js": "application/javascript"
 };
 
@@ -30,6 +31,7 @@ const router = (request, response) => {
       });
       response.end(fromDb);
     });
+
   } else {
   if (endpoint === 'create-place') {
     let body = '';

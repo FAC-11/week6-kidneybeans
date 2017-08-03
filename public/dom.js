@@ -35,14 +35,26 @@ function updateDom(err, data) {
     var places = JSON.parse(data);
     places.forEach(function(place) {
       var row = document.createElement('tr');
-      //now we create the column for our name data;
       var name = document.createElement('td');
       name.innerHTML = place.name;
       row.appendChild(name);
-      //now we create the column for our location data;
+
       var location = document.createElement('td');
       location.innerHTML = place.location;
       row.appendChild(location);
+
+      table.appendChild(row);
+
+      var review = document.createElement('td');
+      review.innerHTML = place.review;
+      row.appendChild(review);
+      table.appendChild(row);
+
+      var stars = document.createElement('td');
+      var i = place.stars;
+      while(i--){
+        stars.innerHTML += '<img src = \"star.png\" class=\"star\">'
+      }
       //now we add both columns to our table by appending the row;
       table.appendChild(row);
     });
