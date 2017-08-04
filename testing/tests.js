@@ -67,17 +67,17 @@ tape("testing postData", t => {
   buildDatabase();
   const expected = [
     {
-      name: "park",
-      location: "down the street"
+      name: "canal path",
+      location: "across the canal"
     }
   ];
   const input = {
-    name: "park",
-    location: "down the street"
+      name: "canal path",
+      location: "across the canal"
   };
   postData(input, (err, res) => {
     dbConnection.query(
-      "SELECT name, location FROM places WHERE name = 'park';",
+      "SELECT name, location FROM places WHERE name = 'canal path';",
       (err, res) => {
         const actual = res.rows;
         t.deepEquals(
