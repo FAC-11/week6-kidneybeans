@@ -7,19 +7,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://fonts.googleapis.com/css?family=Chewy" rel="stylesheet">
     <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Comfortaa|Roboto" rel="stylesheet">
 </head>
 
 <body>
-    <nav>
-        <div class="nav-wrapper">
-            <h1 class="brand-logo">Find your BEEEEEENZ</h1>
-        </div>
-    </nav>
+    <header>
+      <h1> Beans </h1>
+      <div class='heading-box'>
+      <h2> Use our page to find cool coffee shops and restaurants near FAC. Please add your own suggestions as well!</h2>
+    </div>
+    </header>
+
+    <section class='input'>
+      <h2> Please tell us your suggested places! </h2>
     <form class="form" action="/create-place" method="post">
       <input type="text" name="name" value="" placeholder="name">
       <input type="text" name="location" value="" placeholder="location">
-      <input type="submit" value="Add place" name="button" class="submit-button">
+      <input type="text" name="review" value="" placeholder="review coming soon!">
+      <input type="text" name="stars" value="" placeholder="star rating coming soon!">
+      <input class='button' type="submit" value="Add place" name="button">
     </form>
+    <br>
+  </section>
+
+  <section class='results'>
+    <h2> Check these out! </h2>
     <div id = "places-error"></div>
     <div class="table-container">
         <table id="places-table">
@@ -27,10 +39,12 @@
                 <th>Name</th>
                 <th>Location</th>
                 <th>Review</th>
-                <th>Stars</th>
+                <th class='star-column'>Stars</th>
             </tr>
         </table>
     </div>
+    <br>
+  </section>
     <script type="text/javascript" src="./dom.js"></script>
 </body>
 
