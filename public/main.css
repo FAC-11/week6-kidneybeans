@@ -1,0 +1,81 @@
+*{
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+header{
+  text-align: center;
+  padding-top: 5rem;
+  background: url("https://s3-ap-southeast-2.amazonaws.com/fivesenses.com.au/wp-content/uploads/2016/03/17185826/FlatWhite_2000.jpg");
+      background-size: cover;
+      height: 100vh;
+}
+
+h1{
+  font-family: 'Abril Fatface', cursive;
+  color: white;
+  font-size: 6rem;
+  padding-bottom: 3rem;
+}
+
+h2{
+  padding: 4rem 10rem;
+  font-family: 'Comfortaa', cursive;
+  color: white;
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+th{
+    font-family: 'Abril Fatface', cursive;
+    font-size: 1.5rem;
+    padding: 1rem 3.5rem;
+    text-align: center;
+}
+
+td{
+  text-align: center;
+}
+
+.heading-box{
+  background-color: rgba(0,0,0,0.3);
+  backface-visibility: 0.3;
+  margin: 0 4rem;
+}
+
+.input{
+  background-color: #1B2432;
+  height:auto;
+}
+
+
+input{
+  font-size: 1.5rem;
+  color: #1B2432;
+  margin-bottom: 1.5rem;
+  display: flex;
+  width: 40vw;
+  height: 2.5rem;
+  text-align: center;
+  background-color: #7CEAE1;
+}
+
+.button{
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.results{
+  background-color: #326273;
+
+}
+
+.star{
+  height: 30px;
+}
+
+
+.table-container{
+  background-color: #CEE7E6;
+  margin: 0 6rem;
+}
