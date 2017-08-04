@@ -14,17 +14,28 @@
     <header>
       <h1> Beans </h1>
       <div class='heading-box'>
-      <h2> Use our page to find cool coffee shops and restaurants near FAC. Please add your own suggestions as well!</h2>
+      <h2 class="sub-heading"> Use our page to find cool coffee shops and restaurants near FAC. Please add your own suggestions as well!</h2>
     </div>
+    <br>
     </header>
 
     <section class='input'>
       <h2> Please tell us your suggested places! </h2>
+      <h3> Please respect our recommendations and don't add non-sense =)</h3>
     <form class="form" action="/create-place" method="post">
       <input type="text" name="name" value="" placeholder="name">
       <input type="text" name="location" value="" placeholder="location">
-      <input type="text" name="review" value="" placeholder="review coming soon!">
-      <input type="text" name="stars" value="" placeholder="star rating coming soon!">
+      <input type="text" name="review" value="" placeholder="review">
+      <select name="stars">
+        <option value="" disabled selected> Give star rating</option>
+        <option value="0">0 Star</option>
+        <option value="1">1 Star</option>
+        <option value="2">2 Star</option>
+        <option value="3">3 Star</option>
+        <option value="4">4 Star</option>
+        <option value="5">5 Star</option>
+        <option value="6">6 Star</option>
+      </select>
       <input class='button' type="submit" value="Add place" name="button">
     </form>
     <br>
