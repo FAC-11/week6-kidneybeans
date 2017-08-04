@@ -34,7 +34,6 @@ const router = (request, response) => {
 
   } else {
   if (endpoint === 'create-place') {
-    console.log('create-place router with');
     let body = '';
     request.on('data', (chunk) => {
       body += chunk;
