@@ -19,8 +19,8 @@ tape("Select all from tablePlaces", t => {
       name: "COOP",
       location: "Roman Road"
     },
-    {
-      name: "Mezze",
+    { 
+      name: "Mezze", 
       location: "Roman Road"
     }
   ];
@@ -72,8 +72,8 @@ tape("testing postData", t => {
     }
   ];
   const input = {
-    name: "canal path",
-    location: "across the canal"
+      name: "canal path",
+      location: "across the canal"
   };
   postData(input, (err, res) => {
     dbConnection.query(
@@ -92,6 +92,7 @@ tape("testing postData", t => {
 });
 //testing get data
 tape("testing getData", t => {
+  buildDatabase();
   const expected = [
     {
       id: 1,
@@ -124,14 +125,6 @@ tape("testing getData", t => {
       review: "lamacun!!! delicious and cheap!",
       stars: 6,
       tag: "meat"
-    },
-    {
-      id: 5,
-      name: "canal path",
-      location: "across the canal",
-      review: null,
-      stars: null,
-      tag: null
     }
   ];
   getData((err, res) => {
